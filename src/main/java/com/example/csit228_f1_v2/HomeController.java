@@ -1,9 +1,14 @@
 package com.example.csit228_f1_v2;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 
 public class HomeController {
 
@@ -22,7 +27,8 @@ public class HomeController {
         }
     }
 
-    public void onNightModeClick() {
+    public void onNightModeClick() throws IOException {
+        AnchorPane p = (AnchorPane)tbNight.getParent();
         if (tbNight.isSelected()) {
             tbNight.getParent().setStyle("-fx-background-color: BLACK");
             tbNight.setText("DAY");

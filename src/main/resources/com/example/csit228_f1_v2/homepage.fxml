@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.HomeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.HomeController">
    <children>
-      <ComboBox layoutX="84.0" layoutY="76.0" prefWidth="150.0" />
-      <ChoiceBox layoutX="84.0" layoutY="124.0" prefWidth="150.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="386.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
-      <ProgressBar fx:id="pbProgress" layoutX="252.0" layoutY="334.0" prefWidth="200.0" progress="0.33" />
-      <ProgressIndicator fx:id="piProgress" layoutX="473.0" layoutY="314.0" progress="0.9" />
-      <Spinner layoutX="85.0" layoutY="175.0" />
-      <SplitMenuButton layoutX="84.0" layoutY="33.0" mnemonicParsing="false" text="SplitMenuButton">
+      <ToggleButton fx:id="tbNight" layoutX="466.0" layoutY="20.0" mnemonicParsing="false" onAction="#onNightModeClick" prefWidth="81.0" text="Night Mode" />
+      <TextField layoutX="328.0" layoutY="78.0" />
+      <TextField layoutX="328.0" layoutY="113.0" />
+      <TextArea layoutX="34.0" layoutY="41.0" prefHeight="328.0" prefWidth="183.0" />
+      <Text fill="#f8f8f8" layoutX="34.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATABASE" />
+      <Text fill="WHITE" layoutX="382.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE" />
+      <Text fill="WHITE" layoutX="381.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE" />
+      <TextField layoutX="328.0" layoutY="188.0" />
+      <TextField layoutX="328.0" layoutY="220.0" />
+      <Text fill="WHITE" layoutX="383.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DELETE" />
+      <TextField layoutX="328.0" layoutY="287.0" />
+      <TextField layoutX="328.0" layoutY="320.0" />
+      <Text fill="WHITE" layoutX="292.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+      <Text fill="WHITE" layoutX="275.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <Text fill="WHITE" layoutX="300.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Old" />
+      <Text fill="WHITE" layoutX="298.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New" />
+      <Text fx:id="fromtxt" fill="WHITE" layoutX="294.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" />
+      <Text fill="WHITE" layoutX="310.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+      <SplitMenuButton layoutX="486.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="select">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </SplitMenuButton>
-      <Slider fx:id="slSlider" layoutX="352.0" layoutY="69.0" onMouseDragged="#onSliderChange" value="90.0" />
-      <ToggleButton fx:id="tbNight" layoutX="466.0" layoutY="20.0" mnemonicParsing="false" onAction="#onNightModeClick" text="Night Mode" />
-      <TreeView layoutX="386.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
-      <PieChart layoutX="200.0" layoutY="175.0" prefHeight="129.0" prefWidth="149.0" />
+      <Button layoutX="486.0" layoutY="113.0" mnemonicParsing="false" text="ADD" />
+      <Button layoutX="486.0" layoutY="220.0" mnemonicParsing="false" text="SAVE" />
+      <Button layoutX="486.0" layoutY="320.0" mnemonicParsing="false" text="REMOVE" />
    </children>
 </AnchorPane>

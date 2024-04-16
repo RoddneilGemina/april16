@@ -9,6 +9,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class HelloController {
@@ -22,6 +25,7 @@ public class HelloController {
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
+
     @FXML
     protected void onSigninClick() throws IOException {
         Parent homeview = FXMLLoader.load(HelloApplication.class
@@ -29,7 +33,7 @@ public class HelloController {
         AnchorPane p = (AnchorPane) pnLogin.getParent();
         p.getChildren().remove(pnLogin);
         p.getChildren().add(homeview);
-
-
+        CreateTable tbl = new CreateTable();
+        tbl.create();
     }
 }
