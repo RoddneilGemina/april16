@@ -4,16 +4,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.HomeController">
+<AnchorPane fx:id="" onDragDetected="#btnBioPressed" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.HomeController">
    <children>
       <ToggleButton fx:id="tbNight" layoutX="466.0" layoutY="20.0" mnemonicParsing="false" onAction="#onNightModeClick" prefWidth="81.0" text="Night Mode" />
-      <Text fill="#f8f8f8" layoutX="34.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATABASE" />
-      <TextField layoutX="328.0" layoutY="108.0" prefHeight="58.0" prefWidth="149.0" />
-      <VBox layoutX="24.0" layoutY="45.0" prefHeight="329.0" prefWidth="222.0" />
+      <Text fill="#f8f8f8" layoutX="24.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="News Feed" wrappingWidth="70.779296875" />
+      <TextField fx:id="tfPost" layoutX="328.0" layoutY="108.0" prefHeight="58.0" prefWidth="149.0" />
+      <VBox fx:id="vbPosts" layoutX="24.0" layoutY="89.0" prefHeight="198.0" prefWidth="222.0">
+         <children>
+            <ScrollPane fx:id="spPosts" prefHeight="200.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="203.0" prefWidth="200.0" />
+              </content>
+            </ScrollPane>
+         </children></VBox>
       <Text fill="WHITE" layoutX="328.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Post" />
-      <Button layoutX="427.0" layoutY="175.0" mnemonicParsing="false" text="Post" />
-      <TextField layoutX="328.0" layoutY="248.0" prefHeight="45.0" prefWidth="149.0" />
-      <Text fill="WHITE" layoutX="328.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
-      <Button layoutX="411.0" layoutY="302.0" mnemonicParsing="false" text="Update" />
+      <Button fx:id="btnPost" layoutX="427.0" layoutY="175.0" mnemonicParsing="false" onAction="#btnPostPressed" text="Post" />
+      <Text fill="WHITE" layoutX="328.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bio" />
+      <Button fx:id="btnBio" layoutX="411.0" layoutY="302.0" mnemonicParsing="false" onAction="#btnBioPressed" text="Update" />
+      <Label fx:id="lblUser" layoutX="24.0" layoutY="12.0" text="Current User" textFill="WHITE" />
+      <Label layoutX="24.0" layoutY="37.0" text="Bio:" textFill="WHITE" />
+      <Label fx:id="lblBio" layoutX="58.0" layoutY="37.0" text="Label" textFill="WHITE" />
+      <Button fx:id="btnDeleteAccount" layoutX="491.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnDeletePressed" prefHeight="25.0" prefWidth="107.0" text="Delete Account" />
+      <Button fx:id="btnLogout" layoutX="421.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnLogoutPressed" text="Logout" />
+      <TextArea fx:id="taBio" layoutX="328.0" layoutY="226.0" prefHeight="69.0" prefWidth="149.0" />
    </children>
 </AnchorPane>

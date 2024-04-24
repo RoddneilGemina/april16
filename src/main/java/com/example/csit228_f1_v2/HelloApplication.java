@@ -23,21 +23,25 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
+
+    public static Stage loginstage;
+
     @Override
     public void start(Stage stage) throws IOException {
 //        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
 //        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 //        stage.setTitle("Hello!");
 //        stage.setScene(scene);
+        CreateTable createTable = new CreateTable();
+        createTable.create();
+        loginstage = stage;
 
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         Text txtWelcome = new Text("Welcome to CIT");
         txtWelcome.setFont(Font.font("Chiller", FontWeight.EXTRA_BOLD, 69));
         txtWelcome.setFill(Color.RED);
-//        grid.setAlignment();
         grid.setPadding(new Insets(20));
-//        grid.
         txtWelcome.setTextAlignment(TextAlignment.CENTER);
         grid.add(txtWelcome, 0, 0, 3, 1);
 
@@ -49,7 +53,6 @@ public class HelloApplication extends Application {
         TextField tfUsername = new TextField();
         grid.add(tfUsername, 1, 1);
         tfUsername.setFont(Font.font(30));
-//        tfUsername.setMaxWidth(150);
 
         Label lbPassword = new Label("Password");
         lbPassword.setFont(Font.font(30));
@@ -65,19 +68,10 @@ public class HelloApplication extends Application {
         grid.add(tmpPassword, 1, 2);
         tmpPassword.setVisible(false);
 
+        Label status = new Label("Status");
+        grid.add(status, 0, 5, 5, 5);
+
         ToggleButton btnShow = new ToggleButton("( )");
-//        btnShow.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent actionEvent) {
-//                if (btnShow.isSelected()) {
-//                    tmpPassword.setText(pfPassword.getText());
-//                    tmpPassword.setVisible(true);
-//                } else {
-//                    tmpPassword.setVisible(false);
-//                    pfPassword.setText(tmpPassword.getText());
-//                }
-//            }
-//        });
         btnShow.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -102,17 +96,47 @@ public class HelloApplication extends Application {
         btnLogin.setFont(Font.font(40));
         grid.add(btnLogin, 0, 3, 2, 1);
 
+        Button btnSignIn = new Button("Register");
+        btnSignIn.setFont(Font.font(40));
+        grid.add(btnSignIn, 1, 3, 2, 1);
+
+        btnSignIn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                String name = tfUsername.getText();
+                String pass = pfPassword.getText();
+                try{
+                    int added = Operations.createUser(name,pass);
+                    status.setText("Successful Registered");
+                } catch (Exception e){
+                    status.setText("Invalid Register");
+                }
+            }
+        });
+
         btnLogin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("Hello");
-                try {
-                    Parent p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-                    Scene s = new Scene(p);
-                    stage.setScene(s);
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                String name = tfUsername.getText();
+                String pass = pfPassword.getText();
+                if(Operations.verifyLogin(name,pass)){
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
+                        Parent p = loader.load();
+                        Scene s = new Scene(p);
+                        HomeController controller = loader.getController();
+                        controller.setPrevScene(btnLogin.getScene());
+                        controller.setCurrScene(s);
+                        tfUsername.setText("");
+                        pfPassword.setText("");
+                        controller.refresh();
+                        stage.setScene(s);
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    status.setText("Invalid Login !");
                 }
             }
         });
